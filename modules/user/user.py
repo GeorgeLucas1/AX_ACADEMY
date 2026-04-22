@@ -83,8 +83,24 @@ class User:
         elemento_mes.select_by_value("1")
         elemento_ano.select_by_value("2004")
 
+
+    def primeiro_nome(self):
+      primeiro_nome = self.wait.until(
+        EC.element_to_be_clickable((By.CSS_SELECTOR, "#first_name"))
+    )
+    
+    def segundo_nome(self):
+      self.segundo_nome = self.wait.until(
+        EC.element_to_be_clickable((By.CSS_SELECTOR, "##last_name"))
+    )
+    def empresa_companhia(self):
+        self.empresa_companhia = self.wait.until(
+        EC.element_to_be_clickable((By.CSS_SELECTOR, "#company"))
+    )
+    empresa_companhia.send_keys("fpf tech")
+    
 # deve ser de forma linear
-if __name__ == "__main__":
+if __name__ == "__main__":  
     user = User()
     user.create_driver()
     user.clicar_digitar_nome()
@@ -93,4 +109,6 @@ if __name__ == "__main__":
     user.clicar_radio()
     user.clicar_senha()
     user.selecionar_data_aniversario()
+    user.empresa_companhia()
+
     input("Pressione ENTER para encerrar")
